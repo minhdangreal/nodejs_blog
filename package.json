@@ -26,6 +26,7 @@
   "homepage": "https://github.com/minhdangreal/nodejs_blog#readme",
   "description": "",
   "dependencies": {
+    "bootstrap": "^5.3.3",
     "express": "^4.21.1",
     "express-handlebars": "^8.0.1"
   },
