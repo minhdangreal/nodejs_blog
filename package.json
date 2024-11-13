@@ -1,38 +1,51 @@
 {
-  "name": "blog",
-  "version": "1.0.0",
-  "main": "src/index.js",
-  "scripts": {
-    "start": "nodemon --inspect src/index.js",
-    "watch": "sass --watch src/resource/scss/:src/public/css/",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/minhdangreal/nodejs_blog.git"
-  },
-  "keywords": [
-    "f8",
-    "blog",
-    "f8",
-    "nodejs",
-    "nodejs"
-  ],
-  "author": "minhdv",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/minhdangreal/nodejs_blog/issues"
-  },
-  "homepage": "https://github.com/minhdangreal/nodejs_blog#readme",
-  "description": "",
-  "dependencies": {
-    "bootstrap": "^5.3.3",
-    "express": "^4.21.1",
-    "express-handlebars": "^8.0.1"
-  },
-  "devDependencies": {
-    "morgan": "^1.10.0",
-    "nodemon": "^3.1.7",
-    "sass": "^1.80.6"
-  }
+    "name": "blog",
+    "version": "1.0.0",
+    "main": "src/index.js",
+    "scripts": {
+        "beautiful": "lint-staged",
+        "start": "nodemon --inspect src/index.js",
+        "watch": "sass --watch src/resource/scss/:src/public/css/",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "prepare": "husky install"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/minhdangreal/nodejs_blog.git"
+    },
+    "keywords": [
+        "f8",
+        "blog",
+        "f8",
+        "nodejs",
+        "nodejs"
+    ],
+    "author": "minhdv",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/minhdangreal/nodejs_blog/issues"
+    },
+    "homepage": "https://github.com/minhdangreal/nodejs_blog#readme",
+    "lint-staged": {
+        "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "description": "",
+    "dependencies": {
+        "bootstrap": "^5.3.3",
+        "express": "^4.21.1",
+        "express-handlebars": "^8.0.1"
+    },
+    "devDependencies": {
+        "husky": "^8.0.0",
+        "lint-staged": "^15.2.10",
+        "morgan": "^1.10.0",
+        "nodemon": "^3.1.7",
+        "prettier": "^3.3.3",
+        "sass": "^1.80.6"
+    }
 }
