@@ -6,7 +6,7 @@
         "beautiful": "lint-staged",
         "start": "nodemon --inspect src/index.js",
         "watch": "sass --watch src/resource/scss/:src/public/css/",
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "echo \"Error: no test specified\"",
         "prepare": "husky install"
     },
     "repository": {
@@ -37,15 +37,23 @@
     "description": "",
     "dependencies": {
         "bootstrap": "^5.3.3",
+        "connect-flash": "^0.1.1",
         "express": "^4.21.1",
-        "express-handlebars": "^8.0.1"
+        "express-handlebars": "^8.0.1",
+        "express-session": "^1.18.1",
+        "method-override": "^3.0.0",
+        "mongoose": "^8.8.1",
+        "mongoose-slug-updater": "^3.3.0"
     },
     "devDependencies": {
         "husky": "^8.0.0",
         "lint-staged": "^15.2.10",
+        "mongoose-delete": "^1.0.2",
+        "mongoose-slug-generator": "^1.0.4",
         "morgan": "^1.10.0",
         "nodemon": "^3.1.7",
         "prettier": "^3.3.3",
-        "sass": "^1.80.6"
+        "sass": "^1.80.6",
+        "toastify-js": "^1.12.0"
     }
 }

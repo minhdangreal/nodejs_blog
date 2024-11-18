@@ -1,0 +1,85 @@
+<div class="mt-4">
+    <div class="d-flex justify-content-between">
+        <h3>Danh sách khóa học</h3>
+    </div>
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th scope="col" class="align-middle">STT</th>
+                <th scope="col" class="align-middle">Tên khóa học</th>
+                <th scope="col" class="align-middle">Thời gian tạo</th>
+                <th scope="col" class="align-middle">Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each courses}}
+            <tr>
+                <td class="align-middle py-2">{{sum @index 1}}</td>
+                <td class="align-middle py-2">{{this.name}}</td>
+                <td class="align-middle py-2">{{this.createdAt}}</td>
+                <td class="align-middle py-2">
+                    <a href="/courses/{{this._id}}/edit" class="btn btn-primary">Sửa</a>
+                    <form method="POST" action="/courses/{{this._id}}?_method=DELETE" style="display:inline;">
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteCourseModal">Xóa</button>
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <div class="modal fade" id="deleteCourseModal" tabindex="-1" aria-labelledby="deleteCourseModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Xóa khóa học</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có chắc chắn muốn xóa khóa học này không?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" id="confirmDeleteButton">Xóa bỏ</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 11"></div>
+    <div id="deleteSuccessToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">Thông báo</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            Khóa học đã được xóa thành công!
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const deleteButtons = document.querySelectorAll('.btn-danger[data-bs-toggle="modal"]');
+        const deleteModal = document.getElementById('deleteCourseModal');
+        const confirmDeleteButton = document.getElementById('confirmDeleteButton');
+        const deleteSuccessToast = new bootstrap.Toast(document.getElementById('deleteSuccessToast'));
+
+        let formToSubmit;
+
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                formToSubmit = this.closest('form');
+            });
+        });
+
+        confirmDeleteButton.addEventListener('click', function () {
+            if (formToSubmit) {
+                formToSubmit.submit();
+                deleteSuccessToast.show();
+            }
+        });
+    });
+</script>

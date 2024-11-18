@@ -1,9 +1,32 @@
-@import 'variables';
-
-h1 {
-    color: $red-color;
+.card-body a {
+    text-decoration: none;
 }
 
-h2 {
-    color: green;
+.toast-container {
+    position: fixed;
+    top: 50px; // Cách top 20px
+    right: 20px; // Đổi từ right sang left
+    z-index: 11;
+}
+
+.toast {
+    background-color: white;
+    min-width: 250px; // Thêm độ rộng tối thiểu
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); // Thêm shadow
+}
+
+.toast-header {
+    background-color: #198754;
+    color: white;
+    padding: 0.5rem 0.75rem; // Thêm padding cho header
+}
+
+.toast-header .btn-close {
+    filter: brightness(0) invert(1);
+    margin-left: auto; // Đẩy nút close sang phải
+}
+
+// Thêm style cho toast body nếu cần
+.toast-body {
+    padding: 0.75rem;
 }
